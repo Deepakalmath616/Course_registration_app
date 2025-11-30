@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home - Student Courses</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        #course-list {
+            width: 60%;
+            margin: auto;
+        }
+
+        .course-card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0059c9;
+        }
+
+        .count-box {
+            background: white;
+            padding: 15px;
+            width: 250px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 6px #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Available Courses</h1>
+
+    
+    <div class="count-box">
+    <h3>Your Registered Courses: <span id="registeredCount">0</span></h3>
+</div>
+
+<!-- NEW: List of registered course names -->
+<div class="count-box" id="registeredListBox">
+    <h3>Registered Course Names:</h3>
+    <ul id="registeredCoursesList" style="list-style:none; padding:0;"></ul>
+</div>
+
+<div id="course-list"></div>
+
+<script src="/home.js"></script>
+
+
+    
+
+
+</body>
+</html>
