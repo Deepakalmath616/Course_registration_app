@@ -38,7 +38,7 @@ app.use(express.static(publicPath));
 
 // Fallback route for SPA frontend (any non-API route)
 app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
+  res.sendFile(path.join(publicPath, "login.html"));
 });
 
 // -------------------
