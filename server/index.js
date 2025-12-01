@@ -24,19 +24,19 @@ mongoose
 // -------------------
 // API Routes
 // -------------------
-// IMPORTANT: API routes MUST be defined BEFORE frontend serving
+// API routes MUST be defined BEFORE frontend serving
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/courses", require("./routes/courses"));
 
 // -------------------
-// Serve frontend (public folder)
+// Serve frontend (public folder inside server)
 // -------------------
-const publicPath = path.join(__dirname, "..", "public");
+const publicPath = path.join(__dirname, "public"); // updated path
 
-// Serve static assets first
+// Serve static assets
 app.use(express.static(publicPath));
 
-// Fallback route for SPA frontend
+// Fallback route for SPA frontend (any non-API route)
 app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
