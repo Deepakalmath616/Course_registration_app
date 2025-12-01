@@ -10,11 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "..","public")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
-});
 
 // Connect MongoDB
 mongoose
@@ -22,9 +17,17 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
-// Routes
+// API Routes (define BEFORE the frontend fallback)
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/courses", require("./routes/courses"));
+
+// Serve frontend (public folder)
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+// Fallback route for SPA / frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
