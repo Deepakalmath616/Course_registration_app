@@ -17,16 +17,17 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
-// API Routes (define BEFORE the frontend fallback)
+// API Routes (must come BEFORE frontend serving)
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/courses", require("./routes/courses"));
 
-// Serve frontend (public folder)
-app.use(express.static(path.join(__dirname, "..", "public")));
+// Serve static frontend files
+const publicPath = path.join(__dirname, "..", "public");
+app.use(express.static(publicPath));
 
-// Fallback route for SPA / frontend
+// Catch-all route for SPA frontend
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
 // Start server
