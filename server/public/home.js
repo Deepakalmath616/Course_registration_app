@@ -33,7 +33,6 @@ async function loadCourses() {
 
             const div = document.createElement("div");
             div.className = "course-card";
-
             div.innerHTML = `<span>${course.name}</span>`;
 
             const btn = document.createElement("button");
@@ -51,20 +50,17 @@ async function loadCourses() {
 
                 if (registerRes.ok) {
                     alert("Registered successfully!");
-
                     btn.textContent = "Registered";
                     btn.disabled = true;
 
-                    // Update UI live:
+                    // Update UI
                     count++;
                     registeredNames.push(course.name);
-
                     registeredCount.textContent = count;
 
                     const li = document.createElement("li");
                     li.textContent = course.name;
                     registeredCoursesList.appendChild(li);
-
                 } else {
                     alert(data.error);
                 }
@@ -74,10 +70,10 @@ async function loadCourses() {
             courseList.appendChild(div);
         });
 
-        // Show count
+        // Show registered count
         registeredCount.textContent = count;
 
-        // Show names
+        // Show registered names list
         registeredNames.forEach(name => {
             const li = document.createElement("li");
             li.textContent = name;
